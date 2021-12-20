@@ -1,6 +1,6 @@
 package com.innovart.cpve.linksproject.application.service;
 
-import com.innovart.cpve.repository.LinksProjectRepository;
+import com.innovart.cpve.linksproject.application.repository.LinksProjectRepository;
 import org.springframework.stereotype.Service;
 
 @Service

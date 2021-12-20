@@ -1,5 +1,6 @@
 package com.innovart.cpve.user.application.caseuse;
 
+import com.innovart.cpve.user.persistence.dto.UserDropDto;
 import com.innovart.cpve.user.persistence.entity.User;
 import com.innovart.cpve.user.application.service.UserService;
 import org.springframework.stereotype.Component;
@@ -12,8 +13,7 @@ public class DeleteUser {
         this.userService = userService;
     }
 
-    public User delete(User newUser, Long id) {
-        userService.logicalDelete(newUser, id);
-        return newUser;
+    public User delete(UserDropDto newUser, Long id) {
+        return userService.logicalDelete(newUser, id);
     }
 }

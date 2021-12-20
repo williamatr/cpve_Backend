@@ -1,6 +1,6 @@
 package com.innovart.cpve.categoriesproject.application.service;
 
-import com.innovart.cpve.repository.CategoriesProjectRepository;
+import com.innovart.cpve.categoriesproject.application.repository.CategoriesProjectRepository;
 import org.springframework.stereotype.Service;
 
 @Service

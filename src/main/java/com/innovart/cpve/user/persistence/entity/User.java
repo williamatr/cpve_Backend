@@ -1,11 +1,9 @@
 package com.innovart.cpve.user.persistence.entity;
 
-import com.innovart.cpve.entity.Rol;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Data
@@ -17,9 +15,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idUser;
 
-    @ManyToOne
-    @JoinColumn(name = "IDROLES", insertable = false, updatable = false)
-    private Rol rol;
+    @Column(name = "IDROLES")
+    private Long idRol;
 
     @Column(name = "USERNAME")
     private String username;
@@ -44,6 +41,9 @@ public class User {
 
     @Column(name = "CITY")
     private String city;
+
+    @Column(name = "GRANTS")
+    private String grant;
 
     @Column(name = "STATE_ACTIVE")
     private Integer stateActive;

@@ -1,6 +1,6 @@
 package com.innovart.cpve.post.application.service;
 
-import com.innovart.cpve.repository.PostRepository;
+import com.innovart.cpve.post.application.repository.PostRepository;
 import org.springframework.stereotype.Service;
 
 @Service

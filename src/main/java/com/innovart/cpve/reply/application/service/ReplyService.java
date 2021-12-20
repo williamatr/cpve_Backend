@@ -1,6 +1,6 @@
 package com.innovart.cpve.reply.application.service;
 
-import com.innovart.cpve.repository.ReplyRepository;
+import com.innovart.cpve.reply.application.repository.ReplyRepository;
 import org.springframework.stereotype.Service;
 
 @Service

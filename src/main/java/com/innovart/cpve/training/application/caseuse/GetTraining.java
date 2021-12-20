@@ -1,6 +1,6 @@
 package com.innovart.cpve.training.application.caseuse;
 
-import com.innovart.cpve.entity.Training;
+import com.innovart.cpve.training.persistence.entity.Training;
 import com.innovart.cpve.training.application.service.TrainingService;
 import org.springframework.stereotype.Component;
 

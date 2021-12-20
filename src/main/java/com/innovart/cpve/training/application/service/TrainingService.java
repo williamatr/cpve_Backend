@@ -1,7 +1,7 @@
 package com.innovart.cpve.training.application.service;
 
-import com.innovart.cpve.entity.Training;
-import com.innovart.cpve.repository.TrainingRepository;
+import com.innovart.cpve.training.persistence.entity.Training;
+import com.innovart.cpve.training.application.repository.TrainingRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

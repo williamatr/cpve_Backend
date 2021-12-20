@@ -1,6 +1,6 @@
 package com.innovart.cpve.message.application.service;
 
-import com.innovart.cpve.repository.MessageRepository;
+import com.innovart.cpve.message.application.repository.MessageRepository;
 import org.springframework.stereotype.Service;
 
 @Service

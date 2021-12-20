@@ -1,5 +1,6 @@
 package com.innovart.cpve.user.application.caseuse;
 
+import com.innovart.cpve.user.persistence.dto.UserPostDto;
 import com.innovart.cpve.user.persistence.entity.User;
 import com.innovart.cpve.user.application.service.UserService;
 import org.springframework.stereotype.Component;
@@ -13,4 +14,9 @@ public class CreateUser {
     public User save(User newUser) {
         return userService.save(newUser);
     }
+
+    public User saveUser(UserPostDto newUser) {
+        return userService.saveUser(newUser);
+    }
+
 }
