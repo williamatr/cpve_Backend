@@ -20,5 +20,4 @@ public class CreateAttachment {
         return attachmentsTrainingService.saveAttachment(newAttachment);
     }
 
-
 }
