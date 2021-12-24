@@ -16,15 +16,13 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 
 
-    @Query("SELECT u.username, u.password, u.grant FROM User u WHERE u.username=:paramUsernameOrEmail " +
+    @Query(value="SELECT u.username, u.password, u.grant FROM User u WHERE u.username=:paramUsernameOrEmail " +
             "OR u.email=:paramUsernameOrEmail")
     UserLogDto getByUsernameOrEmail(@Param("paramUsernameOrEmail") String usernameOrEmail);
 
-    UserLogDto findByUsername(String username);
+    Optional<User> findByUsername(String username);
 
-    @Query("SELECT u.idUser, u.idRol, u.email, u.phone, u.name, u.lastName, u.country, " +
-            "u.city, u.stateActive FROM User u WHERE u.name=:paramName")
-    Optional<UserGetDto> findUserDtoByName(@Param("paramName") String name);
+    Optional<User> findByName(String name);
 
 
 }

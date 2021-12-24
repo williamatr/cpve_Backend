@@ -36,11 +36,13 @@ public class ContactsUserRestController {
     public ResponseEntity<List<ContactsUser>> getContacts(){
         return new ResponseEntity<>(getContacts.getAll(), HttpStatus.OK);
     }
-    @GetMapping("/users/{id}")
+    @GetMapping("/byuser/{id}")
     @ApiOperation("Get ContactsUser")
     @ApiResponse(code=200, message = "OK")
     public ResponseEntity<List<ContactsUser>> getContactsByUser(@PathVariable Long id){
         return new ResponseEntity<>(getContacts.findCotactsByUser(id), HttpStatus.OK);
     }
+
+
 
 }

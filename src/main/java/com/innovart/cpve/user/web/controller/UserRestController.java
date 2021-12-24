@@ -43,7 +43,7 @@ public class UserRestController {
     @ApiOperation("Get user by ID")
     @ApiResponse(code=200, message = "OK")
     public ResponseEntity<User> getUserById(@PathVariable Long id){
-        return getUser.findById(id)
+        return getUser.getById(id)
                 .map(user -> new ResponseEntity<>(user, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -54,7 +54,7 @@ public class UserRestController {
     }
 
     @PostMapping("/save/")
-    ResponseEntity<User> createUser(@RequestBody UserPostDto newUser) {
+    ResponseEntity<User> createUser(@RequestBody User newUser) {
         return new ResponseEntity<>(createUser.saveUser(newUser), HttpStatus.CREATED);
     }
 
@@ -79,7 +79,14 @@ public class UserRestController {
     @ApiOperation("Get user DTO by ID")
     @ApiResponse(code=200, message = "OK")
     public ResponseEntity<UserGetDto> getUserDtoById(@PathVariable Long id){
-        return new ResponseEntity<>(getUser.findUserDtoById(id), HttpStatus.OK);
+        return new ResponseEntity<>(getUser.getUserDtoById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/name/{name}")
+    @ApiOperation("Get user DTO by username")
+    @ApiResponse(code=200, message = "OK")
+    public ResponseEntity<UserGetDto> getUseByUserName(@PathVariable String name){
+        return new ResponseEntity<>(getUser.getByName(name), HttpStatus.OK);
     }
 
 

@@ -7,16 +7,30 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class JWTUtil {
     private static final String KEY = "cpve32JWT23key";
 
     public String generateToken(UserDetails userDetails){
-        return Jwts.builder().setSubject(userDetails.getUsername()).setIssuedAt(new Date())
+//        Map<String,Object> claims = new HashMap<>();
+//        return createToken(claims, userDetails.getUsername());
+        return Jwts.builder().setSubject(userDetails.getUsername())
+                .claim("authorities",userDetails.getAuthorities())
+                .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
                 .signWith(SignatureAlgorithm.HS256, KEY).compact();
     }
+
+//    private String createToken(Map<String,Object> claims, String subject){
+//        return Jwts.builder().setSubject(subject)
+//                    .claim(AUTHORITIES_KEY, authorities)
+//                    .setIssuedAt(new Date())
+//                    .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
+//                    .signWith(SignatureAlgorithm.HS256, KEY).compact();
+//    }
 
     public boolean validateToken(String token, UserDetails userDetails) {
         return userDetails.getUsername().equals(extractUsername(token)) && !isTokenExpired(token);

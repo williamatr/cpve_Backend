@@ -21,15 +21,15 @@ public class GetUser {
         return userService.getAllUsers();
     }
 
-    public Optional<User> findById(Long id) {
+    public Optional<User> getById(Long id) {
         return userService.findById(id);
     }
 
-    public UserGetDto findUserDtoById(Long id) {
+    public UserGetDto getUserDtoById(Long id) {
         return userService.findUserDtoById(id);
     }
 
-    public Optional<UserGetDto> findUserDtoByName(String name) {
-        return userService.findUserDtoByName(name);
+    public UserGetDto getByName(String name) {
+        return userService.getUserByName(name);
     }
 }

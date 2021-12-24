@@ -12,7 +12,16 @@ public class User {
 
     @Id
     @Column(name = "IDUSERS")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sequence-generator"
+    )
+    @SequenceGenerator(
+            name = "sequence-generator",
+            sequenceName = "SEC_IDUSERS",
+            initialValue = 501,
+            allocationSize=1
+    )
     private Long idUser;
 
     @Column(name = "IDROLES")

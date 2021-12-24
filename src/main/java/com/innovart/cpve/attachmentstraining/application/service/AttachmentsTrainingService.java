@@ -4,13 +4,8 @@ import com.innovart.cpve.attachmentstraining.application.repository.AttachmentsT
 import com.innovart.cpve.attachmentstraining.persistence.dto.AttachmentsPostDto;
 import com.innovart.cpve.attachmentstraining.persistence.dto.AttachmentsPutDto;
 import com.innovart.cpve.attachmentstraining.persistence.entity.AttachmentsTraining;
-import com.innovart.cpve.award.persistence.dto.AwardPutDto;
-import com.innovart.cpve.award.persistence.entity.Award;
-import com.innovart.cpve.user.persistence.dto.UserPostDto;
-import com.innovart.cpve.user.persistence.entity.User;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service

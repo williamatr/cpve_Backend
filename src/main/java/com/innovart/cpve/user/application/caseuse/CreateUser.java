@@ -15,7 +15,7 @@ public class CreateUser {
         return userService.save(newUser);
     }
 
-    public User saveUser(UserPostDto newUser) {
+    public User saveUser(User newUser) {
         return userService.saveUser(newUser);
     }
 

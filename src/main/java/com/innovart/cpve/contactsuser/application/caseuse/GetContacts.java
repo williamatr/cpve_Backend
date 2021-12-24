@@ -11,8 +11,12 @@ public class GetContacts {
 
     private ContactsUserService contactsUserService;
 
+    public GetContacts(ContactsUserService contactsUserService) {
+        this.contactsUserService = contactsUserService;
+    }
+
     public List<ContactsUser> getAll() {
-        return contactsUserService.getAllContacts();
+        return contactsUserService.getAll();
     }
 
     public List<ContactsUser> findCotactsByUser(Long id) {

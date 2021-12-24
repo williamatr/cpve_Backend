@@ -1,6 +1,7 @@
 package com.innovart.cpve.springScurity.service;
 
-import com.innovart.cpve.user.application.repository.UserRepository;
+
+import com.innovart.cpve.user.application.service.UserService;
 import com.innovart.cpve.user.persistence.dto.UserLogDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,18 +19,19 @@ import java.util.List;
 public class CpveUserDetailService implements UserDetailsService {
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String userLogDto) throws UsernameNotFoundException {
-        UserLogDto user = userRepository.getByUsernameOrEmail(userLogDto);
+        UserLogDto user = userService.getUserByUsername(userLogDto);
 
         return new User(user.getUsername(), "{noop}"+user.getPassword(), buildGrante(user.getGrant()));
     }
 
     public List<GrantedAuthority> buildGrante(String grant){
         List<GrantedAuthority> auths = new ArrayList<>();
-        auths.add(new SimpleGrantedAuthority(grant.toUpperCase()));
+        auths.add(new SimpleGrantedAuthority(grant));
+        System.out.println(auths);
         return auths;
     }
 }

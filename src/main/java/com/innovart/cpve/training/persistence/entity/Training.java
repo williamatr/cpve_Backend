@@ -13,7 +13,16 @@ public class Training {
 
     @Id
     @Column(name = "IDTRAININGS")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sequence-generator"
+    )
+    @SequenceGenerator(
+            name = "sequence-generator",
+            sequenceName = "SEC_IDTRAININGS",
+            initialValue = 301,
+            allocationSize=1
+    )
     private Long idTraining;
 
     @ManyToOne

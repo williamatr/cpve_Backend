@@ -15,7 +15,7 @@ public class ContactsUserService {
         this.contactsUserRepository = contactsUserRepository;
     }
 
-    public List<ContactsUser> getAllContacts() {
+    public List<ContactsUser> getAll() {
         return contactsUserRepository.findAll();
     }
     public List<ContactsUser> findCotactsByUser(Long id) {

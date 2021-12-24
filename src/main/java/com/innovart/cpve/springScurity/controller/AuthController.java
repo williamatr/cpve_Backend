@@ -26,6 +26,12 @@ public class AuthController {
 
     private JWTUtil jwtUtil;
 
+    public AuthController(AuthenticationManager authenticationManager, CpveUserDetailService cpveUserDetailService, JWTUtil jwtUtil) {
+        this.authenticationManager = authenticationManager;
+        this.cpveUserDetailService = cpveUserDetailService;
+        this.jwtUtil = jwtUtil;
+    }
+
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> createToken(@RequestBody AuthenticationRequest request){
 

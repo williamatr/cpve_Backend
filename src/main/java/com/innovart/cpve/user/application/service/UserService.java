@@ -1,9 +1,6 @@
 package com.innovart.cpve.user.application.service;
 
-import com.innovart.cpve.user.persistence.dto.UserDropDto;
-import com.innovart.cpve.user.persistence.dto.UserGetDto;
-import com.innovart.cpve.user.persistence.dto.UserPostDto;
-import com.innovart.cpve.user.persistence.dto.UserPutDto;
+import com.innovart.cpve.user.persistence.dto.*;
 import com.innovart.cpve.user.persistence.entity.User;
 import com.innovart.cpve.user.application.repository.UserRepository;
 import org.springframework.data.domain.PageRequest;
@@ -62,7 +59,7 @@ public class UserService{
         return userRepository.findById(id);
     }
 
-    public User saveUser(UserPostDto newUser) {
+    public User saveUser(User newUser) {
         User userNew = new User();
         userNew.setIdRol(newUser.getIdRol());
         userNew.setUsername(newUser.getUsername());
@@ -79,8 +76,16 @@ public class UserService{
         return userRepository.save(userNew);
     }
 
-    public Optional<UserGetDto> findUserDtoByName(String name) {
-        return userRepository.findUserDtoByName(name);
+    public UserGetDto getUserByName(String name) {
+        Optional<User> userByNameOptional = userRepository.findByName(name);
+        UserGetDto userByName = new UserGetDto(userByNameOptional);
+        return userByName;
+    }
+
+    public UserLogDto getUserByUsername(String username) {
+        Optional<User> userByUsernameOptional = userRepository.findByUsername(username);
+        UserLogDto userByUsername = new UserLogDto(userByUsernameOptional);
+        return userByUsername;
     }
 
     public UserGetDto findUserDtoById(Long id) {
