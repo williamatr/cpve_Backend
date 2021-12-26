@@ -11,7 +11,16 @@ public class AttachmentsTraining {
 
     @Id
     @Column(name = "IDATTACHMENTS_TRAININGS")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sequence-generator"
+    )
+    @SequenceGenerator(
+            name = "sequence-generator",
+            sequenceName = "SEC_IDATTACHMENTS",
+            initialValue = 301,
+            allocationSize=1
+    )
     private Long idAttachmentsTraining;
 
     @Column(name = "IDTRAININGS")

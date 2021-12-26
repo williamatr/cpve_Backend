@@ -1,6 +1,5 @@
 package com.innovart.cpve.linksproject.persistence.entity;
 
-import com.innovart.cpve.project.persistence.entity.Project;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,12 +11,20 @@ public class LinksProject {
 
     @Id
     @Column(name = "IDLINKS_PROJECTS")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sequence-generator"
+    )
+    @SequenceGenerator(
+            name = "sequence-generator",
+            sequenceName = "SEC_IDLINKSPROJECTS",
+            initialValue = 1001,
+            allocationSize=1
+    )
     private Long idLinksProject;
 
-    @ManyToOne
-    @JoinColumn(name = "IDPROJECTS", insertable = false, updatable = false)
-    private Project project;
+    @Column(name = "IDPROJECTS")
+    private Long idProject;
 
     @Column(name = "NAME_SOCIAL_MEDIA")
     private String nameSocialMedia;

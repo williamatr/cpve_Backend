@@ -14,9 +14,8 @@ public class UpdateAttachment {
         this.attachmentsTrainingService = attachmentsTrainingService;
     }
 
-    public AttachmentsTraining update(AttachmentsPutDto newAwardPutDto, Long id) {
-        return attachmentsTrainingService.update(newAwardPutDto, id);
+    public AttachmentsTraining updateAttachment(AttachmentsPutDto newAttachment, Long id) {
+        return attachmentsTrainingService.updateAttachment(newAttachment, id);
     }
-
 }
 

@@ -22,14 +22,12 @@ public class UserRestController {
     private CreateUser createUser;
     private DeleteUser deleteUser;
     private UpdateUser updateUser;
-    private GetPageUser getPageUser;
 
-    public UserRestController(GetUser getUser, CreateUser createUser, DeleteUser deleteUser, UpdateUser updateUser, GetPageUser getPageUser) {
+    public UserRestController(GetUser getUser, CreateUser createUser, DeleteUser deleteUser, UpdateUser updateUser) {
         this.getUser = getUser;
         this.createUser = createUser;
         this.deleteUser = deleteUser;
         this.updateUser = updateUser;
-        this.getPageUser = getPageUser;
     }
 
     @GetMapping("/")
@@ -48,11 +46,6 @@ public class UserRestController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/")
-    ResponseEntity<User> newUser(@RequestBody User newUser) {
-        return new ResponseEntity<>(createUser.save(newUser), HttpStatus.CREATED);
-    }
-
     @PostMapping("/save/")
     ResponseEntity<User> createUser(@RequestBody User newUser) {
         return new ResponseEntity<>(createUser.saveUser(newUser), HttpStatus.CREATED);
@@ -63,16 +56,16 @@ public class UserRestController {
         return new ResponseEntity<>(deleteUser.delete(newUser, id), HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     ResponseEntity<User> replaceUser(@RequestBody UserPutDto newUser, @PathVariable Long id){
-        return new ResponseEntity<>(updateUser.update(newUser, id), HttpStatus.OK);
+        return new ResponseEntity<>(updateUser.updateUser(newUser, id), HttpStatus.OK);
     }
 
-    @GetMapping("/pageuser")
+    @GetMapping("/pageuser/")
     @ApiOperation("gets all users, paged")
     @ApiResponse(code=200,message="OK")
     public ResponseEntity<List<UserGetDto>> getPageUser(@RequestParam int page, @RequestParam int size){
-        return new ResponseEntity<>(getPageUser.getPage(page, size), HttpStatus.OK);
+        return new ResponseEntity<>(getUser.getPage(page, size), HttpStatus.OK);
     }
 
     @GetMapping("/userDto/{id}")
@@ -83,7 +76,7 @@ public class UserRestController {
     }
 
     @GetMapping("/name/{name}")
-    @ApiOperation("Get user DTO by username")
+    @ApiOperation("Get user DTO by Name")
     @ApiResponse(code=200, message = "OK")
     public ResponseEntity<UserGetDto> getUseByUserName(@PathVariable String name){
         return new ResponseEntity<>(getUser.getByName(name), HttpStatus.OK);

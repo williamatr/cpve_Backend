@@ -13,7 +13,7 @@ public class UpdateUser {
         this.userService = userService;
     }
 
-    public User update(UserPutDto newUser, Long id) {
+    public User updateUser(UserPutDto newUser, Long id) {
         return userService.update(newUser, id);
     }
 }

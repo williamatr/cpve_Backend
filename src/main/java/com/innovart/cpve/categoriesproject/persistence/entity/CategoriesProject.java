@@ -13,16 +13,23 @@ public class CategoriesProject {
 
     @Id
     @Column(name = "IDCATEGORIES_PROJECTS")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sequence-generator"
+    )
+    @SequenceGenerator(
+            name = "sequence-generator",
+            sequenceName = "SEC_IDCATEGORIESPROJECTS",
+            initialValue = 1001,
+            allocationSize=1
+    )
     private Long idCategoriesProjects;
 
-    @ManyToOne
-    @JoinColumn(name = "IDPROJECTS", insertable = false, updatable = false)
-    private Project project;
+    @Column(name = "IDPROJECTS")
+    private Long idProject;
 
-    @ManyToOne
-    @JoinColumn(name = "IDCATEGORIES", insertable = false, updatable = false)
-    private Category category;
+    @Column(name = "IDCATEGORIES")
+    private Long idCategory;
 
     @Column(name = "STATE_ACTIVE")
     private Integer stateActive;

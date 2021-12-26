@@ -1,12 +1,9 @@
 package com.innovart.cpve.post.persistence.entity;
 
-import com.innovart.cpve.reply.persistence.entity.Reply;
-import com.innovart.cpve.user.persistence.entity.User;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Data
@@ -15,12 +12,20 @@ public class Post {
 
     @Id
     @Column(name = "IDPOSTS_USERS")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sequence-generator"
+    )
+    @SequenceGenerator(
+            name = "sequence-generator",
+            sequenceName = "SEC_IDPOSTS",
+            initialValue = 301,
+            allocationSize=1
+    )
     private Long idPostsUser;
 
-    @ManyToOne
-    @JoinColumn(name = "IDUSERS", insertable = false, updatable = false)
-    private User user;
+    @Column(name = "IDUSERS")
+    private Long idUser;
 
     @Column(name = "CONTENT")
     private String content;
@@ -30,8 +35,5 @@ public class Post {
 
     @Column(name = "POST_DATE")
     private LocalDateTime postDate;
-
-    @OneToMany(mappedBy = "post")
-    private List<Reply> replys;
 
 }

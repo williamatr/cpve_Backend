@@ -35,14 +35,16 @@ public class securityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/**/authenticate/").permitAll()
+                //-------Prueba roles ----//
 //                .antMatchers("/**/admin/").hasRole("admin")
 //                .antMatchers("/**/user/").hasRole("user")
 //                .and()
 //                .formLogin();
-                .anyRequest().authenticated().and().sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-                //------
-                //.anyRequest().permitAll();
+                //------- Autenticador que funciona ----//
+//                .anyRequest().authenticated().and().sessionManagement()
+//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                //------ Configuracionn para pruebas --- //
+                .anyRequest().permitAll();
         http.addFilterBefore(jwtFilterRequest, UsernamePasswordAuthenticationFilter.class);
     }
 

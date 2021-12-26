@@ -13,16 +13,23 @@ public class Message {
 
     @Id
     @Column(name = "IDMESSAGES")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sequence-generator"
+    )
+    @SequenceGenerator(
+            name = "sequence-generator",
+            sequenceName = "SEC_IDMESSAGES",
+            initialValue = 1001,
+            allocationSize=1
+    )
     private Long idMessage;
 
-    @ManyToOne
-    @JoinColumn(name = "IDUSERS", insertable = false, updatable = false)
-    private User user;
+    @Column(name = "IDUSERS")
+    private Long idUser;
 
-    @ManyToOne
-    @JoinColumn(name = "IDRECEIVER", insertable = false, updatable = false)
-    private User receiver;
+    @Column(name = "IDRECEIVER")
+    private Long receiver;
 
     @Column(name = "CONTENT")
     private String content;

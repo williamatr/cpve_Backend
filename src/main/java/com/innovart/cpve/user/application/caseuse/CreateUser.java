@@ -1,6 +1,5 @@
 package com.innovart.cpve.user.application.caseuse;
 
-import com.innovart.cpve.user.persistence.dto.UserPostDto;
 import com.innovart.cpve.user.persistence.entity.User;
 import com.innovart.cpve.user.application.service.UserService;
 import org.springframework.stereotype.Component;

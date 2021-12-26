@@ -1,6 +1,5 @@
 package com.innovart.cpve.training.persistence.entity;
 
-import com.innovart.cpve.user.persistence.entity.User;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -25,9 +24,8 @@ public class Training {
     )
     private Long idTraining;
 
-    @ManyToOne
-    @JoinColumn(name = "IDUSERS", insertable = false, updatable = false)
-    private User user;
+    @Column(name = "IDUSERS")
+    private Long idUser;
 
     @Column(name = "TITLE")
     private String title;

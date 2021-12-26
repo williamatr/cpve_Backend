@@ -1,6 +1,5 @@
 package com.innovart.cpve.blogpost.persistence.entity;
 
-import com.innovart.cpve.user.persistence.entity.User;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,12 +12,20 @@ public class Blogpost {
 
     @Id
     @Column(name = "IDBLOGPOSTS")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sequence-generator"
+    )
+    @SequenceGenerator(
+            name = "sequence-generator",
+            sequenceName = "SEC_IDBLOGPOST",
+            initialValue = 401,
+            allocationSize=1
+    )
     private Long idBlogpost;
 
-    @ManyToOne
-    @JoinColumn(name = "IDUSERS", insertable = false, updatable = false)
-    private User user;
+    @Column(name = "IDUSERS")
+    private Long idUser;
 
     @Column(name = "TITLE")
     private String title;

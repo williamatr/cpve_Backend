@@ -10,8 +10,7 @@ import java.util.List;
 @Repository
 public interface ContactsUserRepository extends JpaRepository<ContactsUser, Long> {
 
-///PORQUEEEEE NO SIRVE=?
-    @Query(value = "SELECT c FROM ContactsUser c WHERE c.userId = ?1")
+    @Query(value = "SELECT c FROM ContactsUser c WHERE c.idUser = ?1")
     List<ContactsUser> search(Long user);
 
 }

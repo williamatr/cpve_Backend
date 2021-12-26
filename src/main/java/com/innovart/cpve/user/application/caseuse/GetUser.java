@@ -4,6 +4,7 @@ import com.innovart.cpve.user.persistence.dto.UserGetDto;
 import com.innovart.cpve.user.persistence.entity.User;
 import com.innovart.cpve.user.application.service.UserService;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,4 +33,9 @@ public class GetUser {
     public UserGetDto getByName(String name) {
         return userService.getUserByName(name);
     }
+
+    public List<UserGetDto> getPage(@RequestParam int page, @RequestParam int size) {
+        return userService.getPageUsers(page, size);
+    }
+
 }

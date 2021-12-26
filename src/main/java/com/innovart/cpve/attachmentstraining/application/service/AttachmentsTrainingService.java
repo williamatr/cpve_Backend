@@ -7,6 +7,7 @@ import com.innovart.cpve.attachmentstraining.persistence.entity.AttachmentsTrain
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AttachmentsTrainingService {
@@ -21,22 +22,13 @@ public class AttachmentsTrainingService {
         return attachmentsTrainingRepository.findAll();
     }
 
-    public AttachmentsTraining update(AttachmentsPutDto newAwardPutDto, Long id) {
+    public AttachmentsTraining updateAttachment(AttachmentsPutDto newAwardPutDto, Long id) {
         return attachmentsTrainingRepository.findById(id)
                 .map(
                         attachment -> {
                             attachment.setIdTraining(newAwardPutDto.getIdTraining());
                             attachment.setNameAttachment(newAwardPutDto.getNameAttachment());
-                            attachment.setLinkAttachment(newAwardPutDto.getNameAttachment());
-                            return attachmentsTrainingRepository.save(attachment);
-                        }
-                ).get();
-    }
-
-    public AttachmentsTraining logicalDelete(AttachmentsPutDto newAwardPutDto, Long id) {
-        return attachmentsTrainingRepository.findById(id)
-                .map(
-                        attachment -> {
+                            attachment.setLinkAttachment(newAwardPutDto.getLinkAttachment());
                             attachment.setStateActive(newAwardPutDto.getStateActive());
                             return attachmentsTrainingRepository.save(attachment);
                         }
@@ -52,4 +44,11 @@ public class AttachmentsTrainingService {
         return attachmentsTrainingRepository.save(attachmentNew);
     }
 
+    public List<AttachmentsTraining> findByIdTraining(Long id) {
+        return attachmentsTrainingRepository.findByIdTraining(id);
+    }
+
+    public Optional<AttachmentsTraining> findById(Long id) {
+        return attachmentsTrainingRepository.findById(id);
+    }
 }

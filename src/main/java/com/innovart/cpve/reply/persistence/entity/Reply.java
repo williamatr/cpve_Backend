@@ -1,7 +1,5 @@
 package com.innovart.cpve.reply.persistence.entity;
 
-import com.innovart.cpve.post.persistence.entity.Post;
-import com.innovart.cpve.user.persistence.entity.User;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,16 +12,23 @@ public class Reply {
 
     @Id
     @Column(name = "IDREPLY_POSTS")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sequence-generator"
+    )
+    @SequenceGenerator(
+            name = "sequence-generator",
+            sequenceName = "SEC_REPLYS",
+            initialValue = 601,
+            allocationSize=1
+    )
     private Long idReplyPost;
 
-    @ManyToOne
-    @JoinColumn(name = "IDUSERS", insertable = false, updatable = false)
-    private User user;
+    @Column(name = "IDUSERS")
+    private Long idUser;
 
-    @ManyToOne
-    @JoinColumn(name = "IDPOSTS_USERS", insertable = false, updatable = false)
-    private Post post;
+    @Column(name = "IDPOSTS_USERS")
+    private Long idPost;
 
     @Column(name = "CONTENT")
     private String content;

@@ -102,7 +102,6 @@ public class UserService{
         for (User user : usersList){
             userDtoList.add(new UserGetDto(user));
         }
-
         return userDtoList;
     }
 
